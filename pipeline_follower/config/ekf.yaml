@@ -1,0 +1,62 @@
+ekf_filter_node:
+  ros__parameters:
+    frequency: 30.0
+    sensor_timeout: 0.5
+    two_d_mode: false
+    publish_tf: false
+    map_frame: world
+    odom_frame: odom
+    base_link_frame: bluerov2/base_link
+    world_frame: world  # Can be "map" if using absolute pose
+    transform_time_offset: 0.0
+    transform_timeout: 0.1
+    use_sim_time: true
+
+    # DVL sensor: provides linear velocity
+    twist0: /bluerov2/dvl
+    twist0_config: [false, false, false,
+                    false, false, false,
+                    true, true, true,
+                    false, false, false,
+                    false, false, false]
+    twist0_differential: false
+    twist0_relative: false
+
+    # IMU: provides orientation, angular velocity and acceleration
+    imu0: /imu/data
+    imu0_config: [false, false, false,	#Position [x, y, z]
+                  true, true, true,	#Orientation [roll, pitch, yaw]
+                  false, false, false,	#Linear velocity [vx, vy, vz]
+                  true, true, true,	#Angular velocity [vroll, vpitch, vyaw]
+                  true, true, true]	#Acceleration [ax, ay, az]
+    imu0_differential: false
+    imu0_relative: false
+    imu0_remove_gravitational_acceleration: true
+    imu0_frame_id: bluerov2/mpu
+    
+    pose0: /bluerov2/depth
+    pose0_config: [false, false, true,	#Position [x, y, z]
+                  false, false, false,	#Orientation [roll, pitch, yaw]
+                  false, false, false,	#Linear velocity [vx, vy, vz]
+                  false, false, false,	#Angular velocity [vroll, vpitch, vyaw]
+                  false, false, false]	#Acceleration [ax, ay, az]
+    pose0_differential: false
+    pose0_relative: false
+    pose0_queue_size: 10
+    
+    pose1: /bluerov2/acoustic_pose
+    pose1_config: [true, true, true,	#Position [x, y, z]
+                  false, false, false,	#Orientation [roll, pitch, yaw]
+                  false, false, false,	#Linear velocity [vx, vy, vz]
+                  false, false, false,	#Angular velocity [vroll, vpitch, vyaw]
+                  false, false, false]	#Acceleration [ax, ay, az]
+    pose1_differential: false
+    pose1_relative: false
+    pose1_queue_size: 10
+
+    # Debugging
+    print_diagnostics: true
+    debug: false
+    debug_out_file: /tmp/ekf_debug_output.txt
+
+
