@@ -55,12 +55,8 @@ This repository includes the following custom nodes:
 - Controllers and model description are based on open-source BlueROV2 ROS 2 repositories  
 - These components are reused and integrated into the simulation stack
 
----
-
 ## State Estimation
-
 State estimation is performed using the ROS 2 `robot_localization` EKF:
-
 - Configuration via YAML file
 - Fuses:
   - Noisy IMU
@@ -73,20 +69,26 @@ The EKF provides:
 - Orientation
 - Linear and angular velocity
 
----
 ## Running the simulation
 Launch the main.launch file with 
 ````
 ros2 launch pipeline_follower pipeline_launch.py
 ````
 
-## Objective
+## Results
+### Position estimate: EKF vs Ground truth
+<img width="2292" height="1287" alt="image" src="https://github.com/user-attachments/assets/785e32ba-b9d4-4718-bd2a-008749f5d509" />
 
-The objective of this project is to demonstrate:
-- Sensor fusion with EKF
-- Realistic noise modeling
-- Waypoint-based navigation
-- Full autonomy stack integration in ROS 2 / Gazebo
+### Position estimate: EKF vs Pose given by trilateration
+<img width="2292" height="1287" alt="image" src="https://github.com/user-attachments/assets/992a6dd4-6924-4e02-8090-7facf313defa" />
+Sensor fusion provides a correction of the z position of the bluerov2
 
-This type of architecture is directly applicable to UAV/AUV autonomy pipelines where robust state estimation is required for planning and control.
+### Velocity estimate: EKF vs Noisy DVL
+<img width="2292" height="1287" alt="image" src="https://github.com/user-attachments/assets/d8039b0f-ecf3-443e-9745-941f11754529" />
+
+
+
+
+
+
 
