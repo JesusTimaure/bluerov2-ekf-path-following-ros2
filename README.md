@@ -70,7 +70,7 @@ The EKF provides:
 - Linear and angular velocity
 
 ## Running the simulation
-Launch the main.launch file with 
+To run the simulation must launch the pipeline_launch file:
 ````
 ros2 launch pipeline_follower pipeline_launch.py
 ````
@@ -81,14 +81,7 @@ ros2 launch pipeline_follower pipeline_launch.py
 
 ### Position estimate: EKF vs Pose given by trilateration
 <img width="2292" height="1287" alt="image" src="https://github.com/user-attachments/assets/992a6dd4-6924-4e02-8090-7facf313defa" />
-Sensor fusion provides a correction of the z position of the bluerov2
+Sensor fusion provides a correction of the z position of the bluerov2 thanks to the depth sensor
 
 ### Velocity estimate: EKF vs Noisy DVL
 <img width="2292" height="1287" alt="image" src="https://github.com/user-attachments/assets/d8039b0f-ecf3-443e-9745-941f11754529" />
-
-
-
-
-
-
-
